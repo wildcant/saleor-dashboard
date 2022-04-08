@@ -27,12 +27,9 @@ export interface CollectionListPageProps
     SearchPageProps,
     TabPageProps,
     FilterPageProps<CollectionFilterKeys, CollectionListFilterOpts>,
-    CollectionListProps {
-  channelsCount: number;
-}
+    CollectionListProps {}
 
 const CollectionListPage: React.FC<CollectionListPageProps> = ({
-  channelsCount,
   currentTab,
   disabled,
   initialSearch,

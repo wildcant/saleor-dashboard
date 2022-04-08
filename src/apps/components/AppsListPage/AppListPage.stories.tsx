@@ -25,7 +25,6 @@ const props: AppsListPageProps = {
   customAppsList,
   disabled: false,
   installedAppsList: appsList,
-  loadingAppsInProgress: false,
   navigateToCustomApp: () => undefined,
   navigateToCustomAppCreate: () => undefined,
   onAppInProgressRemove: () => undefined,
@@ -46,7 +45,6 @@ storiesOf("Views / Apps / Apps list", module)
       {...props}
       appsInProgressList={undefined}
       disabled={true}
-      loadingAppsInProgress={true}
       installedAppsList={undefined}
       customAppsList={undefined}
     />

@@ -84,36 +84,37 @@ const useStyles = makeStyles(
   { name: "ProductListPage" }
 );
 
-export const ProductListPage: React.FC<ProductListPageProps> = props => {
-  const {
-    channelsCount,
-    currencySymbol,
-    currentTab,
-    defaultSettings,
-    gridAttributes,
-    limits,
-    availableInGridAttributes,
-    filterOpts,
-    hasMore,
-    initialSearch,
-    loading,
-    settings,
-    tabs,
-    totalGridAttributes,
-    onAdd,
-    onAll,
-    onExport,
-    onFetchMore,
-    onFilterChange,
-    onFilterAttributeFocus,
-    onSearchChange,
-    onTabChange,
-    onTabDelete,
-    onTabSave,
-    onUpdateListSettings,
-    selectedChannelId,
-    ...listProps
-  } = props;
+export const ProductListPage: React.FC<ProductListPageProps> = ({
+  currencySymbol,
+  currentTab,
+  defaultSettings,
+  gridAttributes,
+  limits,
+  availableInGridAttributes,
+  filterOpts,
+  hasMore,
+  initialSearch,
+  loading,
+  settings,
+  tabs,
+  totalGridAttributes,
+  onAdd,
+  onAll,
+  onExport,
+  onFetchMore,
+  onFilterChange,
+  onFilterAttributeFocus,
+  onSearchChange,
+  onTabChange,
+  onTabDelete,
+  onTabSave,
+  onUpdateListSettings,
+  selectedChannelId,
+  ...props
+}) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { channelsCount, ...listProps } = props;
+
   const intl = useIntl();
   const classes = useStyles(props);
 

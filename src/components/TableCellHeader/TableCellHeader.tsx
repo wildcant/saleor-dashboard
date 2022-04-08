@@ -64,9 +64,8 @@ export interface TableCellHeaderProps extends TableCellProps {
 }
 
 const TableCellHeader = React.forwardRef<unknown, TableCellHeaderProps>(
-  (props, ref) => {
-    const classes = useStyles(props);
-    const {
+  (
+    {
       arrowPosition,
       children,
       className,
@@ -74,9 +73,14 @@ const TableCellHeader = React.forwardRef<unknown, TableCellHeaderProps>(
       textAlign,
       disabled = false,
       onClick,
-      title,
-      ...rest
-    } = props;
+      ...props
+    },
+    ref
+  ) => {
+    const classes = useStyles(props);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { title, ...rest } = props;
 
     return (
       <TableCell

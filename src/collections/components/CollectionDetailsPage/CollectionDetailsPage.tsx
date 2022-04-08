@@ -19,16 +19,13 @@ import { Backlink, ConfirmButtonTransitionState } from "@saleor/macaw-ui";
 import React from "react";
 import { useIntl } from "react-intl";
 
-import { ChannelProps, ListActions, PageListProps } from "../../../types";
+import { ListActions, PageListProps } from "../../../types";
 import CollectionDetails from "../CollectionDetails/CollectionDetails";
 import { CollectionImage } from "../CollectionImage/CollectionImage";
 import CollectionProducts from "../CollectionProducts/CollectionProducts";
 import CollectionUpdateForm, { CollectionUpdateData } from "./form";
 
-export interface CollectionDetailsPageProps
-  extends PageListProps,
-    ListActions,
-    ChannelProps {
+export interface CollectionDetailsPageProps extends PageListProps, ListActions {
   channelsCount: number;
   channelsErrors: CollectionChannelListingErrorFragment[];
   collection: CollectionDetailsQuery["collection"];
@@ -55,7 +52,6 @@ const CollectionDetailsPage: React.FC<CollectionDetailsPageProps> = ({
   errors,
   hasChannelChanged,
   saveButtonBarState,
-  selectedChannelId,
   onBack,
   onCollectionRemove,
   onImageDelete,

@@ -45,11 +45,13 @@ export const ChannelCreateView = ({}) => {
 
   const handleSubmit = ({
     shippingZonesIdsToAdd,
-    shippingZonesIdsToRemove,
     currencyCode,
-    ...rest
-  }: FormData) =>
-    extractMutationErrors(
+    ...params
+  }: FormData) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { shippingZonesIdsToRemove, ...rest } = params;
+
+    return extractMutationErrors(
       createChannel({
         variables: {
           input: {
@@ -60,6 +62,7 @@ export const ChannelCreateView = ({}) => {
         }
       })
     );
+  };
 
   const {
     loadMore: fetchMoreShippingZones,

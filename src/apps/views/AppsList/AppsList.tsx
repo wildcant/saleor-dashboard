@@ -82,7 +82,6 @@ export const AppsList: React.FC<AppsListProps> = ({ params }) => {
 
   const {
     data: appsInProgressData,
-    loading: loadingAppsInProgress,
     refetch: appsInProgressRefetch
   } = useAppsInstallationsQuery({
     displayLoader: false
@@ -307,7 +306,6 @@ export const AppsList: React.FC<AppsListProps> = ({ params }) => {
         installedAppsList={installedApps}
         customAppsList={customApps}
         appsInProgressList={appsInProgressData}
-        loadingAppsInProgress={loadingAppsInProgress}
         disabled={loading || customAppsLoading}
         settings={settings}
         pageInfo={pageInfo}

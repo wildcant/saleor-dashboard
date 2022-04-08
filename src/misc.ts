@@ -400,6 +400,7 @@ export function findInEnum<TEnum extends {}>(needle: string, haystack: TEnum) {
 export function addressToAddressInput<T>(
   address: T & AddressFragment
 ): AddressInput {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id, __typename, ...rest } = address;
   return {
     ...rest,
@@ -411,7 +412,7 @@ export function findValueInEnum<TEnum extends {}>(
   needle: string,
   haystack: TEnum
 ): TEnum[keyof TEnum] {
-  const match = Object.entries(haystack).find(([_, value]) => value === needle);
+  const match = Object.entries(haystack).find(([, value]) => value === needle);
 
   if (!match) {
     throw new Error(`Value ${needle} not found in enum`);

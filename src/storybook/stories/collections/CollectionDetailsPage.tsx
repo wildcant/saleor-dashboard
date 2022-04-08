@@ -36,8 +36,7 @@ const props: Omit<CollectionDetailsPageProps, "classes"> = {
   onProductUnassign: () => undefined,
   onSubmit: () => undefined,
   openChannelsModal: () => undefined,
-  saveButtonBarState: "default",
-  selectedChannelId: "123"
+  saveButtonBarState: "default"
 };
 
 storiesOf("Views / Collections / Collection detailsCollection details", module)

@@ -37,7 +37,6 @@ const PluginsListPage: React.FC<PluginsListPageProps> = ({
   initialSearch,
   filterOpts,
   tabs,
-  onAdd,
   onAll,
   onBack,
   onSearchChange,
@@ -45,9 +44,12 @@ const PluginsListPage: React.FC<PluginsListPageProps> = ({
   onTabChange,
   onTabDelete,
   onTabSave,
-  ...listProps
+  ...props
 }) => {
   const intl = useIntl();
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { onAdd, ...listProps } = props;
 
   const filterStructure = createFilterStructure(intl, filterOpts);
 

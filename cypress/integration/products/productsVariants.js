@@ -10,9 +10,7 @@ import {
   createProduct,
   updateChannelInProduct
 } from "../../support/api/requests/Product";
-import { getDefaultChannel } from "../../support/api/utils/channelsUtils";
 import * as productUtils from "../../support/api/utils/products/productsUtils";
-import * as shippingUtils from "../../support/api/utils/shippingUtils";
 import { getProductVariants } from "../../support/api/utils/storeFront/storeFrontProductUtils";
 import filterTests from "../../support/filterTests";
 import {

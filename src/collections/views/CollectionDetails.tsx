@@ -27,7 +27,6 @@ import useChannels from "@saleor/hooks/useChannels";
 import useLocalPaginator, {
   useLocalPaginationState
 } from "@saleor/hooks/useLocalPaginator";
-import useLocalStorage from "@saleor/hooks/useLocalStorage";
 import useNavigator from "@saleor/hooks/useNavigator";
 import useNotifier from "@saleor/hooks/useNotifier";
 import { commonMessages, errorMessages } from "@saleor/intl";
@@ -163,8 +162,6 @@ export const CollectionDetails: React.FC<CollectionDetailsProps> = ({
   const paginate = useLocalPaginator(setPaginationState);
 
   const handleBack = () => navigate(collectionListUrl());
-
-  const [selectedChannel] = useLocalStorage("collectionListChannel", "");
 
   const { data, loading } = useCollectionDetailsQuery({
     displayLoader: true,
@@ -340,7 +337,6 @@ export const CollectionDetails: React.FC<CollectionDetailsProps> = ({
           collectionChannelsChoices?.length !== currentChannels?.length
         }
         channelsCount={availableChannels.length}
-        selectedChannelId={selectedChannel}
         openChannelsModal={handleChannelsModalOpen}
         onChannelsChange={setCurrentChannels}
       />

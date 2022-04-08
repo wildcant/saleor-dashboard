@@ -15,23 +15,26 @@ interface CardTitleProps {
 const CardTitle: React.FC<CardTitleProps> = ({
   className,
   children,
-  height,
   title,
   subtitle,
   toolbar,
-  onClick,
-  ...rest
-}) => (
-  <CardHeader
-    action={toolbar}
-    className={className}
-    title={title}
-    subheader={subtitle}
-    {...rest}
-  >
-    {children}
-  </CardHeader>
-);
+  ...props
+}) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { height, onClick, ...rest } = props;
+
+  return (
+    <CardHeader
+      action={toolbar}
+      className={className}
+      title={title}
+      subheader={subtitle}
+      {...rest}
+    >
+      {children}
+    </CardHeader>
+  );
+};
 
 CardTitle.displayName = "CardTitle";
 export default CardTitle;
