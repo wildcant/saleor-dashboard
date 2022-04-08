@@ -72,6 +72,7 @@ export const AppPage: React.FC<AppPageProps> = ({
             variant="primary"
             data-tc="open-app"
             target="_blank"
+            rel="noopener"
           >
             <FormattedMessage
               defaultMessage="App home page"
@@ -84,6 +85,7 @@ export const AppPage: React.FC<AppPageProps> = ({
             variant="primary"
             data-tc="open-support"
             target="_blank"
+            rel="noopener"
           >
             <FormattedMessage
               defaultMessage="Support/FAQ"

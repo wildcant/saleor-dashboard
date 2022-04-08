@@ -240,7 +240,8 @@ export const OrderUnconfirmedDetails: React.FC<OrderUnconfirmedDetailsProps> = (
             onInvoiceClick={id =>
               window.open(
                 order.invoices.find(invoice => invoice.id === id)?.url,
-                "_blank"
+                "_blank",
+                "rel=noopener"
               )
             }
             onInvoiceGenerate={() =>
