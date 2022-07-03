@@ -19,6 +19,9 @@ export const useStyles = makeStyles(
     },
     tableRow: {
       minHeight: "48px"
+    },
+    greyText: {
+      color: theme.palette.text.hint
     }
   }),
   { name: "TaxCountriesMenu" }
