@@ -180,6 +180,9 @@ export type AppExtensionFilterInput = {
 
 /** All places where app extension can be mounted. */
 export enum AppExtensionMountEnum {
+  CUSTOMER_OVERVIEW_CREATE = 'CUSTOMER_OVERVIEW_CREATE',
+  CUSTOMER_OVERVIEW_MORE_ACTIONS = 'CUSTOMER_OVERVIEW_MORE_ACTIONS',
+  CUSTOMER_DETAILS_MORE_ACTIONS = 'CUSTOMER_DETAILS_MORE_ACTIONS',
   PRODUCT_OVERVIEW_CREATE = 'PRODUCT_OVERVIEW_CREATE',
   PRODUCT_OVERVIEW_MORE_ACTIONS = 'PRODUCT_OVERVIEW_MORE_ACTIONS',
   PRODUCT_DETAILS_MORE_ACTIONS = 'PRODUCT_DETAILS_MORE_ACTIONS',
@@ -682,6 +685,15 @@ export type ChannelUpdateInput = {
   removeWarehouses?: InputMaybe<Array<Scalars['ID']>>;
 };
 
+export type CheckoutAddressValidationRules = {
+  /** Determines if an error should be raised when the provided address doesn't have all the required fields. The list of required fields is dynamic and depends on the country code (use the `addressValidationRules` query to fetch them). Note: country code is mandatory for all addresses regardless of the rules provided in this input. */
+  checkRequiredFields?: InputMaybe<Scalars['Boolean']>;
+  /** Determines if an error should be raised when the provided address doesn't match the expected format. Example: using letters for postal code when the numbers are expected. */
+  checkFieldsFormat?: InputMaybe<Scalars['Boolean']>;
+  /** Determines if Saleor should apply normalization on address fields. Example: converting city field to uppercase letters. */
+  enableFieldsNormalization?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type CheckoutCreateInput = {
   /** Slug of a channel in which to create a checkout. */
   channel?: InputMaybe<Scalars['String']>;
@@ -695,6 +707,14 @@ export type CheckoutCreateInput = {
   billingAddress?: InputMaybe<AddressInput>;
   /** Checkout language code. */
   languageCode?: InputMaybe<LanguageCodeEnum>;
+  /**
+   * The checkout validation rules that can be changed.
+   *
+   * Added in Saleor 3.5.
+   *
+   * Note: this API is currently in Feature Preview and can be subject to changes at later point.
+   */
+  validationRules?: InputMaybe<CheckoutValidationRules>;
 };
 
 /** An enumeration. */
@@ -780,6 +800,13 @@ export type CheckoutSortingInput = {
   direction: OrderDirection;
   /** Sort checkouts by the selected field. */
   field: CheckoutSortField;
+};
+
+export type CheckoutValidationRules = {
+  /** The validation rules that can be applied to provided shipping address data. */
+  shippingAddress?: InputMaybe<CheckoutAddressValidationRules>;
+  /** The validation rules that can be applied to provided billing address data. */
+  billingAddress?: InputMaybe<CheckoutAddressValidationRules>;
 };
 
 export type CollectionChannelListingUpdateInput = {

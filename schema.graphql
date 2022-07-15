@@ -707,6 +707,9 @@ input AppExtensionFilterInput {
 
 """All places where app extension can be mounted."""
 enum AppExtensionMountEnum {
+  CUSTOMER_OVERVIEW_CREATE
+  CUSTOMER_OVERVIEW_MORE_ACTIONS
+  CUSTOMER_DETAILS_MORE_ACTIONS
   PRODUCT_OVERVIEW_CREATE
   PRODUCT_OVERVIEW_MORE_ACTIONS
   PRODUCT_DETAILS_MORE_ACTIONS
@@ -2883,6 +2886,23 @@ type CheckoutAddPromoCode {
   errors: [CheckoutError!]!
 }
 
+input CheckoutAddressValidationRules {
+  """
+  Determines if an error should be raised when the provided address doesn't have all the required fields. The list of required fields is dynamic and depends on the country code (use the `addressValidationRules` query to fetch them). Note: country code is mandatory for all addresses regardless of the rules provided in this input.
+  """
+  checkRequiredFields: Boolean = true
+
+  """
+  Determines if an error should be raised when the provided address doesn't match the expected format. Example: using letters for postal code when the numbers are expected.
+  """
+  checkFieldsFormat: Boolean = true
+
+  """
+  Determines if Saleor should apply normalization on address fields. Example: converting city field to uppercase letters.
+  """
+  enableFieldsNormalization: Boolean = true
+}
+
 """Update billing address in the existing checkout."""
 type CheckoutBillingAddressUpdate {
   """An updated checkout."""
@@ -2959,6 +2979,15 @@ input CheckoutCreateInput {
 
   """Checkout language code."""
   languageCode: LanguageCodeEnum
+
+  """
+  The checkout validation rules that can be changed.
+  
+  Added in Saleor 3.5.
+  
+  Note: this API is currently in Feature Preview and can be subject to changes at later point.
+  """
+  validationRules: CheckoutValidationRules
 }
 
 type CheckoutCreated implements Event {
@@ -3327,6 +3356,18 @@ type CheckoutUpdated implements Event {
   Note: this API is currently in Feature Preview and can be subject to changes at later point.
   """
   checkout: Checkout
+}
+
+input CheckoutValidationRules {
+  """
+  The validation rules that can be applied to provided shipping address data.
+  """
+  shippingAddress: CheckoutAddressValidationRules
+
+  """
+  The validation rules that can be applied to provided billing address data.
+  """
+  billingAddress: CheckoutAddressValidationRules
 }
 
 type ChoiceValue {
@@ -10793,6 +10834,15 @@ type Mutation {
     DEPRECATED: this field will be removed in Saleor 4.0. Use `id` instead.
     """
     token: UUID
+
+    """
+    The rules for changing validation for received billing address data.
+    
+    Added in Saleor 3.5.
+    
+    Note: this API is currently in Feature Preview and can be subject to changes at later point.
+    """
+    validationRules: CheckoutAddressValidationRules
   ): CheckoutBillingAddressUpdate
 
   """
@@ -11119,6 +11169,15 @@ type Mutation {
     DEPRECATED: this field will be removed in Saleor 4.0. Use `id` instead.
     """
     token: UUID
+
+    """
+    The rules for changing validation for received shipping address data.
+    
+    Added in Saleor 3.5.
+    
+    Note: this API is currently in Feature Preview and can be subject to changes at later point.
+    """
+    validationRules: CheckoutAddressValidationRules
   ): CheckoutShippingAddressUpdate
 
   """Updates the shipping method of the checkout."""
