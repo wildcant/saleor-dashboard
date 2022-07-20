@@ -1,4 +1,5 @@
 import {
+  ChannelUsabilityDataQuery,
   CountryWithCodeFragment,
   FulfillmentStatus,
   InvoiceFragment,
@@ -1580,7 +1581,7 @@ export const draftOrder = (placeholder: string): OrderDetailsFragment => ({
   __typename: "Order" as "Order",
   giftCards: [],
   actions: [OrderAction.CAPTURE],
-  shippingMethods: null,
+  shippingMethods: [],
   billingAddress: null,
   canFinalize: true,
   channel: {
@@ -2419,4 +2420,12 @@ export const warehouseSearch: SearchWarehousesQuery["search"] = {
     __typename: "PageInfo",
   },
   __typename: "WarehouseCountableConnection",
+};
+
+export const channelUsabilityData: ChannelUsabilityDataQuery = {
+  __typename: "Query",
+  products: {
+    __typename: "ProductCountableConnection",
+    totalCount: 50,
+  },
 };
